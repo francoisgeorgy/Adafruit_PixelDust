@@ -414,10 +414,14 @@ void Adafruit_PixelDust::iterate(int16_t ax, int16_t ay, int16_t az) {
     // X/Y/Z axes (e.g. [1 0 0][0 1 0][0 0 1]). Plane vectors are relative
     // to this and normalized. Results all int16_t, interim work uses floats.
 #if 0
-    plane[p].accel[0] = (int)(0.5 + (float)ax * plane[p].core.x_vec[0] +
-      (float)ay * plane[p].core.y_vec[0] + (float)az * plane[p].z_vec[0]);
-    plane[p].accel[1] = (int)(0.5 + (float)ax * plane[p].core.x_vec[1] +
-      (float)ay * plane[p].core.y_vec[1] + (float)az * plane[p].z_vec[1]);
+    plane[p].accel[0] = (int)(0.5 +
+                             (float)ax * plane[p].core.x_vec[0] +
+                             (float)ay * plane[p].core.y_vec[0] +
+                             (float)az * plane[p].z_vec[0]);
+    plane[p].accel[1] = (int)(0.5 +
+                             (float)ax * plane[p].core.x_vec[1] +
+                             (float)ay * plane[p].core.y_vec[1] +
+                             (float)az * plane[p].z_vec[1]);
 //    plane[p].accel[2] = (int)(0.5 + (float)az2 * plane[p].core.x_vec[2] +
 //      (float)az2 * plane[p].core.y_vec[2] + (float)az2 * plane[p].z_vec[2]);
     plane[p].accel[2] = 0;
@@ -426,11 +430,14 @@ void Adafruit_PixelDust::iterate(int16_t ax, int16_t ay, int16_t az) {
 // and those scales/offsets occur when assigning to vars on the way out.
 #else
     int32_t ix = (int32_t)(fx * plane[p].core.x_vec[0] +
-      fy * plane[p].core.y_vec[0] + fz * plane[p].z_vec[0]) * scale / 256;
+                           fy * plane[p].core.y_vec[0] +
+                           fz * plane[p].z_vec[0]) * scale / 256;
     int32_t iy = (int32_t)(fx * plane[p].core.x_vec[1] +
-      fy * plane[p].core.y_vec[1] + fz * plane[p].z_vec[1]) * scale / 256;
+                           fy * plane[p].core.y_vec[1] +
+                           fz * plane[p].z_vec[1]) * scale / 256;
     int32_t iz = abs((int32_t)(fz * plane[p].core.x_vec[2] +
-      fy * plane[p].core.y_vec[2] + fz * plane[p].z_vec[2]) * scale / 2048);
+                               fy * plane[p].core.y_vec[2] +
+                               fz * plane[p].z_vec[2]) * scale / 2048);
     // A tiny bit of random motion is applied to each grain, so that tall
     // stacks of pixels tend to topple (else the whole stack slides across
     // the display). This is a function of the Z axis input, so it's more
