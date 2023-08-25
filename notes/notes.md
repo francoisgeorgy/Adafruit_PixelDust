@@ -34,16 +34,31 @@ For a cube centered at the origin, with edges parallel to the axes and with an e
 of the vertices are (±1, ±1, ±1) while the interior consists of all points (x0, x1, x2) with −1 < xi < 1 for all i.
 
 
-Les bonnes questions : 
+#### 2D vector normalization : 
+
+    length = sqrt(v.x * v.x + v.y * v.y);
+    
+    // normalize vector
+    v.x /= length;
+    v.y /= length;
+    
+    // increase vector size
+    v.x *= 10
+    v.y *= 10
+    
+
+## Les bonnes questions : 
 
 - quels sont les "normales" des faces d'un cube
 - [patron cube à imprimer sans colle](https://www.google.com/search?q=patron%20cube%20%C3%A0%20imprimer%20sans%20colle&tbm=isch&hl=fr&sa=X&ved=0CB4QtI8BKAFqFwoTCMC80Zjg94ADFQAAAAAdAAAAABAl&biw=1671&bih=1018)
 
 
+## Layout
+
 ![cubemap1.png](cubemap1.png)
 
 
-A voir : 
+## A voir : 
 
 projection 3D : 
 
