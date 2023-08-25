@@ -32,19 +32,19 @@
     and just leaves it there.
 */
 typedef enum {
-  LIS3DH_RANGE_16_G = 0b11, ///< +/- 16g
-  LIS3DH_RANGE_8_G = 0b10,  ///< +/- 8g
-  LIS3DH_RANGE_4_G = 0b01,  ///< +/- 4g
-  LIS3DH_RANGE_2_G = 0b00   ///< +/- 2g (default value)
+    LIS3DH_RANGE_16_G = 0b11, ///< +/- 16g
+    LIS3DH_RANGE_8_G = 0b10,  ///< +/- 8g
+    LIS3DH_RANGE_4_G = 0b01,  ///< +/- 4g
+    LIS3DH_RANGE_2_G = 0b00   ///< +/- 2g (default value)
 } lis3dh_range_t;
 
 /*!
     @brief Accelerometer axes.  NOT CURRENTLY USED.
 */
 typedef enum {
-  LIS3DH_AXIS_X = 0x0, ///< X axis
-  LIS3DH_AXIS_Y = 0x1, ///< Y axis
-  LIS3DH_AXIS_Z = 0x2, ///< Z axis
+    LIS3DH_AXIS_X = 0x0, ///< X axis
+    LIS3DH_AXIS_Y = 0x1, ///< Y axis
+    LIS3DH_AXIS_Z = 0x2, ///< Z axis
 } lis3dh_axis_t;
 
 /*!
@@ -53,16 +53,16 @@ typedef enum {
     and just leaves it there.
 */
 typedef enum {
-  LIS3DH_DATARATE_400_HZ = 0b0111,         ///< 400 Hz
-  LIS3DH_DATARATE_200_HZ = 0b0110,         ///< 200 Hz
-  LIS3DH_DATARATE_100_HZ = 0b0101,         ///< 100 Hz
-  LIS3DH_DATARATE_50_HZ = 0b0100,          ///<  50 Hz
-  LIS3DH_DATARATE_25_HZ = 0b0011,          ///<  25 Hz
-  LIS3DH_DATARATE_10_HZ = 0b0010,          ///<  10 Hz
-  LIS3DH_DATARATE_1_HZ = 0b0001,           ///<   1 Hz
-  LIS3DH_DATARATE_POWERDOWN = 0,           ///< Power-down sleep state
-  LIS3DH_DATARATE_LOWPOWER_1K6HZ = 0b1000, ///< Low-power state 1
-  LIS3DH_DATARATE_LOWPOWER_5KHZ = 0b1001,  ///< Low-power state 2
+    LIS3DH_DATARATE_400_HZ = 0b0111,         ///< 400 Hz
+    LIS3DH_DATARATE_200_HZ = 0b0110,         ///< 200 Hz
+    LIS3DH_DATARATE_100_HZ = 0b0101,         ///< 100 Hz
+    LIS3DH_DATARATE_50_HZ = 0b0100,          ///<  50 Hz
+    LIS3DH_DATARATE_25_HZ = 0b0011,          ///<  25 Hz
+    LIS3DH_DATARATE_10_HZ = 0b0010,          ///<  10 Hz
+    LIS3DH_DATARATE_1_HZ = 0b0001,           ///<   1 Hz
+    LIS3DH_DATARATE_POWERDOWN = 0,           ///< Power-down sleep state
+    LIS3DH_DATARATE_LOWPOWER_1K6HZ = 0b1000, ///< Low-power state 1
+    LIS3DH_DATARATE_LOWPOWER_5KHZ = 0b1001,  ///< Low-power state 2
 } lis3dh_dataRate_t;
 
 /*!
@@ -72,40 +72,45 @@ typedef enum {
 */
 class Adafruit_LIS3DH {
 public:
-  /*!
-      @brief Constructor -- allocates the basic Adafruit_LIS3DH object,
-             this should be followed with a call to begin() to initiate
-             I2C communication.
-  */
-  Adafruit_LIS3DH(void);
-  /*!
-      @brief Constructor -- closes I2C (if needed) and deallocates memory
-             associated with an Adafruit_LIS3DH object.
-  */
-  ~Adafruit_LIS3DH(void);
-  /*!
-      @brief  Initiates I2C communication with the LIS3DH accelerometer.
-      @param  I2C address of device (optional -- uses default 0x18 if
-              unspecified).
-      @return LIS3DH_OK on success, else one of the LIS3DH_ERR_* values.
-  */
-  int begin(uint8_t addr = LIS3DH_DEFAULT_ADDRESS);
-  /*!
-      @brief 'Raw' reading of accelerometer X/Y/Z.
-      @param Pointer to integer to receive X acceleration value.
-      @param Pointer to integer to receive Y acceleration value.
-      @param Pointer to integer to receive Z acceleration value.
-  */
-  const void accelRead(int *x, int *y, int *z);
-  /*!
-      @brief Closes I2C communication with accelerometer.
-  */
-  void end(void);
+    /*!
+        @brief Constructor -- allocates the basic Adafruit_LIS3DH object,
+               this should be followed with a call to begin() to initiate
+               I2C communication.
+    */
+    Adafruit_LIS3DH(void);
+
+    /*!
+        @brief Constructor -- closes I2C (if needed) and deallocates memory
+               associated with an Adafruit_LIS3DH object.
+    */
+    ~Adafruit_LIS3DH(void);
+
+    /*!
+        @brief  Initiates I2C communication with the LIS3DH accelerometer.
+        @param  I2C address of device (optional -- uses default 0x18 if
+                unspecified).
+        @return LIS3DH_OK on success, else one of the LIS3DH_ERR_* values.
+    */
+    int begin(uint8_t addr = LIS3DH_DEFAULT_ADDRESS);
+
+    /*!
+        @brief 'Raw' reading of accelerometer X/Y/Z.
+        @param Pointer to integer to receive X acceleration value.
+        @param Pointer to integer to receive Y acceleration value.
+        @param Pointer to integer to receive Z acceleration value.
+    */
+    const void accelRead(int *x, int *y, int *z);
+
+    /*!
+        @brief Closes I2C communication with accelerometer.
+    */
+    void end(void);
 
 private:
-  int i2c_fd; // I2C file descriptor
-  const void writeRegister8(uint8_t reg, uint8_t value);
-  const uint8_t readRegister8(uint8_t reg);
+    int i2c_fd; // I2C file descriptor
+    const void writeRegister8(uint8_t reg, uint8_t value);
+
+    const uint8_t readRegister8(uint8_t reg);
 };
 
 #endif // _LIS3DH_H_
