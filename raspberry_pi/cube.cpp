@@ -43,6 +43,25 @@ Plane plane[] = {                         //  top edge          left edge       
         {64, 64, {0,  -1, 0},  {1,  0,  0},  {{1, EDGE_RIGHT}, {4, EDGE_BOTTOM}, {2, EDGE_BOTTOM}, {3, EDGE_LEFT}}}, // 5
 //  w   h      x_vec[3]        y_vec[3]      link[4]            plane                side
 };
+
+// Normals (cartesian product) :
+//
+// 0: ( 0,-1, 0) x (-1, 0, 0) = ()
+// 1: ( 0, 0, 1) x ( 0,-1, 0) = ()
+// 2: (-1, 0, 0) x ( 0, 0, 1) = ()
+// 3: ( 0, 0,-1) x ( 0,-1, 0) = ()
+// 4: ( 1, 0, 0) x ( 0, 0,-1) = ()
+// 5: ( 0,-1, 0) x ( 1, 0, 0) = ()
+//                                x  y  z
+// 0: { 0,-1, 0} x {-1, 0, 0} = { 0, 0,-1}
+// 1: { 0, 0, 1} x { 0,-1, 0} = { 1, 0, 0}
+// 2: {-1, 0, 0} x { 0, 0, 1} = { 0, 1, 0}
+// 3: { 0, 0,-1} x { 0,-1, 0} = {-1, 0, 0}
+// 4: { 1, 0, 0} x { 0, 0,-1} = { 0, 1, 0}      { 1, 0, 0} x { 0, 0, 1} = { 0,-1, 0}
+// 5: { 0,-1, 0} x { 1, 0, 0} = { 0, 0, 1}
+//
+
+
 #define NUM_PLANES (sizeof(plane) / sizeof(plane[0]))
 
 // Signal handler allows matrix to be properly deinitialized.

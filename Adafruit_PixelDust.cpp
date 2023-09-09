@@ -471,8 +471,7 @@ void Adafruit_PixelDust::iterate(int16_t ax, int16_t ay, int16_t az) {
         // diagonal movement isn't faster than horizontal/vertical. This all
         // takes place in the grain's current plane...if it would go off-edge
         // to another plane (and vectors shift around), that's computed later.
-        v2 =
-                (int32_t) grain[i].vx * grain[i].vx + (int32_t) grain[i].vy * grain[i].vy;
+        v2 = (int32_t) grain[i].vx * grain[i].vx + (int32_t) grain[i].vy * grain[i].vy;
         if (v2 > 65536) { // If v^2 > 65536, then v > 256
             // Technically we'd want ceil(sqrt()) here, but ceil() is a floating-
             // point function and performance is better if getting back to integer
