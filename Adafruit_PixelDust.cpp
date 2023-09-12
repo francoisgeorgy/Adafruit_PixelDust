@@ -216,8 +216,7 @@ void Adafruit_PixelDust::iterate(int16_t ax, int16_t ay, int16_t az) {
         // and other such mayhem.  Though it takes some extra math, velocity is
         // clipped as a 2D vector (not separately-limited X & Y) so that
         // diagonal movement isn't faster than horizontal/vertical.
-        v2 =
-                (int32_t) grain[i].vx * grain[i].vx + (int32_t) grain[i].vy * grain[i].vy;
+        v2 = (int32_t) grain[i].vx * grain[i].vx + (int32_t) grain[i].vy * grain[i].vy;
         if (v2 > 65536) {      // If v^2 > 65536, then v > 256
             v = sqrt((float) v2); // Velocity vector magnitude
             grain[i].vx = (int) (256.0 * (float) grain[i].vx / v); // Maintain heading &
