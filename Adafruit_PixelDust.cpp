@@ -447,7 +447,12 @@ void Adafruit_PixelDust::iterate(int16_t ax, int16_t ay, int16_t az) {
         // the display). This is a function of the Z axis input, so it's more
         // pronounced the more the display is tilted (else the grains shift
         // around too much when the display is held level).
-        iz = (iz >= 4) ? 1 : 5 - iz; // Clip & invert
+//        iz = (iz >= 4) ? 1 : 5 - iz; // Clip & invert
+        if (iz >= 4) {
+            iz = 1;
+        } else {
+            iz = 5 - iz;
+        } // Clip & invert
         plane[p].accel[0] = ix - iz;
         plane[p].accel[1] = iy - iz;
         plane[p].accel[2] = iz * 2 + 1;

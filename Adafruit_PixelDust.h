@@ -26,7 +26,7 @@
 #include <stdlib.h>
 #include <string.h>
 /*! Remap Arduino-style random() to stdlib-style. */
-#define random(X) (random() % X)
+#define random(X) (random() % X)        // https://linux.die.net/man/3/random range from 0 to RAND_MAX
 #endif
 
 // The internal representation of sand grains places them in an integer
