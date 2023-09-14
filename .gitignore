@@ -2,3 +2,10 @@
 Doxyfile*
 doxygen_sqlite3.db
 html
+/cmake-build-debug/
+/.idea/Adafruit_PixelDust.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
