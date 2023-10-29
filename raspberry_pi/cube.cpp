@@ -34,14 +34,15 @@ FrameCanvas *canvas;
 Adafruit_LIS3DH lis3dh;
 volatile bool running = true;
 
-Plane plane[] = {                         //  top edge          left edge         right edge        bottom edge
+Plane plane[] = {
+        //  top edge          left edge         right edge        bottom edge
         {64, 64, {0,  -1, 0},  {-1, 0,  0},  {{1, EDGE_LEFT},  {2, EDGE_TOP},    {4, EDGE_TOP},    {3, EDGE_RIGHT}}}, // 0
         {64, 64, {0,  0,  1},  {0,  -1, 0},  {{2, EDGE_LEFT},  {0, EDGE_TOP},    {5, EDGE_TOP},    {4, EDGE_RIGHT}}}, // 1
         {64, 64, {-1, 0,  0},  {0,  0,  1},  {{0, EDGE_LEFT},  {1, EDGE_TOP},    {3, EDGE_TOP},    {5, EDGE_RIGHT}}}, // 2
         {64, 64, {0,  0,  -1}, {0,  -1, 0},  {{2, EDGE_RIGHT}, {5, EDGE_BOTTOM}, {0, EDGE_BOTTOM}, {4, EDGE_LEFT}}}, // 3
         {64, 64, {1,  0,  0},  {0,  0,  -1}, {{0, EDGE_RIGHT}, {3, EDGE_BOTTOM}, {1, EDGE_BOTTOM}, {5, EDGE_LEFT}}}, // 4
         {64, 64, {0,  -1, 0},  {1,  0,  0},  {{1, EDGE_RIGHT}, {4, EDGE_BOTTOM}, {2, EDGE_BOTTOM}, {3, EDGE_LEFT}}}, // 5
-//  w   h      x_vec[3]        y_vec[3]      link[4]            plane                side
+        //  w   h      x_vec[3]        y_vec[3]      link[4]            plane                side
 };
 
 // Normals (cartesian product) :
